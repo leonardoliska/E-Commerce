@@ -294,7 +294,7 @@ main {
     .card {
         margin: 0;
     }
-    .card:nth-child(n+5) {
+    .card:nth-child(n+4) {
         margin: 50px 0 0;
     }
 }
