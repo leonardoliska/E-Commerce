@@ -130,6 +130,7 @@ main {
 }
     .barra-pesquisa--input:hover {
         border: 2px solid var(--clr-secondary);
+        transition: 0.4s;
     }
     .barra-pesquisa--input:focus {
         outline: 0;
@@ -150,10 +151,10 @@ main {
 
 
 /* CARRINHO DE COMPRAS */
-.carrinho-compras {
+.carrinho {
     margin: 3vh 0;
 }
-.carrinho-compras h3 {
+.carrinho--header {
     background-color: var(--clr-secondary);
     color: var(--clr-white);
     border: 0;
@@ -161,30 +162,79 @@ main {
     padding: 10px 0;
     text-align: center;
 }
-    .carrinho-compras h3:hover {
-        background-color: var(--clr-primary);
-        transition: all 0.4s;
-    }
-.carrinho-compras--lista {
-    background-color: var(--clr-grey-0);
+.carrinho--lista {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 200px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    padding: 21px 0 11px;
+    background-color: var(--clr-grey-0);
 }
-.carrinho-compras--lista h2 {
+.carrinho--vazio-conteiner {
+    align-self: center;
+}
+.carrinho--vazio-conteiner h2 {
     color: var(--clr-grey-100);
     text-align: center;
-    margin-bottom: 5px;
+    width: 100%;
 }
-.carrinho-compras--lista a {
+.carrinho--card {
+    min-width: 40%;
+    margin: 0 1%;
+    padding: 2% 0;
+    flex: 0 0 0;
+}
+.carrinho--card-figure {
+    height: 90px;
+    display: flex;
+    justify-content: center;
+}
+.carrinho--card-figure img {
+    height: 90%;
+    width: auto;
+}
+.carrinho--card-name {
+    color: var(--clr-grey-100);
+    text-align: center;
+}
+.carrinho--card-price {
+    color: var(--clr-primary);
+    font-weight: 600;
+    margin: 5px 0;
+    text-align: center;
+}
+.carrinho--card-remove, .carrinho--card-add {
     color: var(--clr-grey-50);
+    width: 100%;
+    font-size: 12px;
     text-align: center;
     text-decoration: none;
+    text-align: center;
+    display: block;
 }
-    .carrinho-compras--lista a:hover {
+    .carrinho--card-remove:hover, .carrinho--card-add:hover {
         color: var(--clr-secondary);
+        cursor: pointer;
     }
+.carrinho-preço {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100px;
+    padding: 15px 6% 20px 5% ;
+    background-color: var(--clr-grey-100);
+}
+.carrinho-preço p {
+    width: 50%;
+}
+.carrinho-preço p:nth-child(odd) {
+    color: var(--clr-white);
+}
+.carrinho-preço p:nth-child(even) {
+    color: var(--clr-grey-50);
+    text-align: right;
+}
+
 /* FIM CARRINHO DE COMPRAS */
 
 
@@ -201,8 +251,9 @@ main {
 }
     .vitrine--card:hover {
         border: 2px solid var(--clr-primary);
+        transition: border-color 0.4s;
     }
-.vitrine--card-info-box {
+.vitrine--card-info-conteiner {
     padding: 11px 1% 11px 5%;
 }
 .vitrine--card-figure {
@@ -240,7 +291,9 @@ main {
     color: var(--clr-grey-50);
 } 
     .vitrine--card-add:hover {
-        color: var(--clr-secondary)
+        color: var(--clr-secondary);
+        transition: 0.4s;
+        cursor: pointer;
     }
 /* FIM VITRINE */
 
@@ -282,11 +335,26 @@ main {
     .barra-pesquisa {
         width: 30%;
     }
-    .carrinho-compras {
+    .carrinho {
         width: 30%;
     }
-    .carrinho-compras--lista {
-        height: 350px;
+    .carrinho--lista {
+        height: 400px;
+        flex-flow: column nowrap;
+    }
+    .carrinho--vazio-conteiner h2 {
+        margin: 149px 0 8px;
+    }
+    .carrinho--card {
+        display: flex;
+        min-height: 31%;
+        margin: 0 2%;
+    }
+    .carrinho--card-info {
+        padding-left: 5%;
+    }
+    .carrinho--card-name, .carrinho--card-price, .carrinho--card-remove {
+        text-align: left;
     }
     .vitrine {
         width: 70%;
