@@ -74,14 +74,19 @@ header {
     .menu:hover .menu--lista, .menu--lista:hover{
         display: block;
     }
+.menu--icon {
+    border-radius: 5px;
+}
 .menu--lista {
     display: none;
     position: absolute;
+    overflow: hidden;
     top: 0px;
-    right: 48px;
+    right: 40px;
     background-color: var(--clr-white);
     border: 1px solid var(--clr-secondary);
     border-bottom: 0;
+    border-radius: 10px 0 10px 10px;
 }
 .menu--link {
     display: block;
@@ -100,6 +105,10 @@ header {
     color: var(--clr-white);
     transition: all 0.4s;
     padding-left: 15px;
+}
+.menu--link-active {
+    background-color: var(--clr-secondary);
+    color: var(--clr-white);
 }
 
 /* FIM CABEÇALHO */
@@ -183,7 +192,7 @@ main {
     width: 100%;
 }
 .carrinho--card {
-    min-width: 40%;
+    min-width: min(40%, 200px);
     margin: 0 1%;
     padding: 2% 0;
     flex: 0 0 0;
@@ -328,15 +337,12 @@ main {
     .menu--link {
         border: 0;
         padding: 10px;
+        margin: 0 5px;
         width: auto;
-        color: var(--clr-grey-50);
+        border-radius: 4px;
     }
     .menu--link:hover {
         padding: 10px;
-        border-radius: 4px;
-    }
-    .menu--link-active {
-        color: var(--clr-black);
     }
 }
 @media only screen and (min-width: 1024px) {
