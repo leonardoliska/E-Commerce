@@ -277,6 +277,9 @@ main {
 .showcase-item:nth-child(odd) {
     margin-right: 10%;
 }
+.showcase-item:nth-child(n+3) {
+    margin-top: 50px;
+}
 .showcase-item-info-conteiner {
     padding: 11px 1% 11px 5%;
 }
@@ -333,6 +336,9 @@ main {
     .showcase-item:nth-child(3n+2) {
         margin: 0 5%;
     }
+    .showcase-item:nth-child(n+4) {
+        margin-top: 50px;
+    }
     .menu-icon {
         display: none;
     }
@@ -379,8 +385,5 @@ main {
     }
     #showcase {
         width: 65%;
-    }
-    .showcase-item:nth-child(n+4) {
-        margin-top: 50px;
     }
 }
