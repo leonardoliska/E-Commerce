@@ -76,14 +76,14 @@ header {
     }
 
 .menu-icon {
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
 }
 .menu-list {
     display: none;
     position: absolute;
     overflow: hidden;
     top: 0px;
-    right: 40px;
+    right: 48px;
     background-color: var(--clr-white);
     border: 1px solid var(--clr-secondary);
     border-bottom: 0;
