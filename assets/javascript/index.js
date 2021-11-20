@@ -336,9 +336,3 @@ for (let i = 0; i < linksArray.length; i++) {
 // Adiciona Event Listener no botão de pesquisa
 const searchButton = document.querySelector('.search-bar-button')
 searchButton.addEventListener('click', filterByName)
-
-// OBS: COLOCAR ALT NAS IMAGES 
-// ADICIONAR CLASSE CURRENT LINK
-// ADICIONAR QUERYSELECTOR
-// MUDAR O HOVER DO MENU
-// ADD FAVICON
