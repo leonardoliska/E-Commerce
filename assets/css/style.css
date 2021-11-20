@@ -112,6 +112,12 @@ main {
 }
 /* FIM MAIN */
 
+/* COLUNA LATERAL */
+#coluna-lateral {
+    order: -1;
+}
+
+
 /* BARRA DE PESQUISA */
 .barra-pesquisa {
     margin: 0 0 3vh;
@@ -241,17 +247,19 @@ main {
 .vitrine {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
 }
 .vitrine--card {
-    width: min(45%, 320px);
-    margin: 15px 0;
+    box-sizing: border-box;
+    width: 45%;
     border: 2px solid var(--clr-grey-0)
 }
     .vitrine--card:hover {
         border: 2px solid var(--clr-primary);
         transition: border-color 0.4s;
     }
+.vitrine--card:nth-child(odd) {
+    margin-right: 10%;
+}
 .vitrine--card-info-conteiner {
     padding: 11px 1% 11px 5%;
 }
@@ -299,7 +307,14 @@ main {
 /* MEDIA QUERIES */
 @media only screen and (min-width: 768px) {
     .vitrine--card {
-        width: 25%;
+        width: 30%;
+        margin: 0;
+    }
+    .vitrine--card:nth-child(odd) {
+        margin: 0;
+    }
+    .vitrine--card:nth-child(3n+2) {
+        margin: 0 5%;
     }
     .menu--icon {
         display: none;
@@ -327,15 +342,11 @@ main {
 @media only screen and (min-width: 1024px) {
     main {
         display: flex;
-        flex-flow: column wrap-reverse;
-        align-items: flex-end;
-        height: max(100vh, 950px);
+        justify-content: space-between;
     }
-    .barra-pesquisa {
+    #coluna-lateral {
         width: 30%;
-    }
-    .carrinho {
-        width: 30%;
+        order: 1;
     }
     .carrinho--lista {
         height: 400px;
@@ -353,12 +364,9 @@ main {
         text-align: left;
     }
     .vitrine {
-        width: 70%;
-    }
-    .vitrine--card {
-        margin: 0;
+        width: 65%;
     }
     .vitrine--card:nth-child(n+4) {
-        margin: 50px 0 0;
+        margin-top: 50px;
     }
 }
