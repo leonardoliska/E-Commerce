@@ -222,13 +222,75 @@ function updateCartTotal() {
     priceElement.innerText = cartTotalPrice
 }
 
-// Criar os cards padrão
-for(const card of Object.values(cards)) {
-    createCard(card)
+function filterByName() {
+    resetVitrine()
+
+    // Seleciona todas as cards da vitrine e armazena em um array
+    const vitrineCards = document.getElementsByClassName('vitrine--card')
+
+    // Armazena o valor da pesquisa
+    const searchValue = document.querySelector('.barra-pesquisa--input').value
+    console.log(searchValue)
+
+    // Itera por todos os card da vitrine
+    for (let i = 0; i < vitrineCards.length; i++) {
+        const currentCard = vitrineCards[i]
+        const currentCardName = currentCard.querySelector('.vitrine--card-name').innerText.toLowerCase()
+        
+        // Remove o card se o seu nome não incluir o valor selecionado
+        if (currentCardName.includes(searchValue.toLowerCase()) == false) {
+            currentCard.remove()
+            // Decremento do "i" por motivo de remover um elemento do array, que altera seu tamanho
+            i--
+        }
+    }
 }
+
+function filterByTag(tag) {
+    resetVitrine()
+
+    if (tag != 'Todos'){
+        // Seleciona todas as cards da vitrine e armazena em um array
+        const vitrineCards = document.getElementsByClassName('vitrine--card')
+
+        // Itera por cada card e verifica se ela possui a tag selecionada
+        for (let i = 0; i < vitrineCards.length; i++) {
+            const currentCard = vitrineCards[i]
+            const currentCardTag = currentCard.querySelector('.vitrine--card-tag').innerText
+
+            if (currentCardTag != tag) {
+                // Remove o card se ele não tiver a tag selecionada 
+                currentCard.remove()
+                // Decremento do "i" por motivo de remover um elemento do array, que altera seu tamanho
+                i--
+            }
+        }
+    }
+}
+
+function resetVitrine() {
+    // Resetar os cards na vitrine
+    const vitrine = document.querySelector('.vitrine')
+    vitrine.innerHTML = ''
+    for(const card of Object.values(cards)) {
+        createCard(card)
+    }
+}
+
+// Criar todos os cards padrão
+resetVitrine()
 
 // Criar elemento padrão do carrinho
 createEmptyCart()
 
+// Adiciona Event Listener no menu de links
+const tagLink = document.getElementsByClassName('menu--link')
+for (let i = 0; i < tagLink.length; i++) {
+    const link = tagLink[i]
+    const tagName = link.innerText
+    link.addEventListener('click', () => filterByTag(tagName))
+}
 
-
+// Adiciona Event Listener no botão de pesquisa
+const searchButton = document.querySelector('.barra-pesquisa--button')
+searchButton.addEventListener('click', filterByName)
