@@ -181,7 +181,7 @@ function createEmptyCartElement() {
 
     // Adicionar classes aos elementos
     emptyCartConteiner.classList.add('cart-empty-conteiner')
-    emptyCartAdd.classList.add('cart-empty-add')
+    emptyCartAdd.classList.add('cart-item-add')
 
     // Adicionar elementos em seu 'parent'
     emptyCartConteiner.appendChild(emptyCartTitle)
@@ -321,6 +321,9 @@ function resetShowcase() {
 
 // Criar todos os itens padrão da vitrine
 resetShowcase()
+
+// Criar itens no carrinho pela primeira vez
+updateCartState()
 
 // Adiciona Event Listener no menu de links
 const linksArray = document.getElementsByClassName('menu-link')

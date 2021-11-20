@@ -77,6 +77,10 @@ header {
 
 .menu-icon {
     border-radius: 0 5px 5px 0;
+    width: 48px;
+    box-sizing: border-box;
+    height: 48px;
+    padding: 6px;
 }
 .menu-list {
     display: none;
@@ -191,6 +195,7 @@ main {
     color: var(--clr-grey-100);
     text-align: center;
     width: 100%;
+    margin-bottom: 15px;
 }
 .cart-item {
     min-width: min(40%, 200px);
@@ -218,7 +223,7 @@ main {
     margin: 5px 0;
     text-align: center;
 }
-.cart-item-remove, .cart-empty-add {
+.cart-item-remove, .cart-item-add {
     color: var(--clr-grey-50);
     width: 100%;
     font-size: 12px;
