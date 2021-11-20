@@ -74,14 +74,19 @@ header {
     .menu:hover .menu--lista, .menu--lista:hover{
         display: block;
     }
+.menu--icon {
+    border-radius: 5px;
+}
 .menu--lista {
     display: none;
     position: absolute;
+    overflow: hidden;
     top: 0px;
-    right: 48px;
+    right: 40px;
     background-color: var(--clr-white);
     border: 1px solid var(--clr-secondary);
     border-bottom: 0;
+    border-radius: 10px 0 10px 10px;
 }
 .menu--link {
     display: block;
@@ -101,6 +106,10 @@ header {
     transition: all 0.4s;
     padding-left: 15px;
 }
+.menu--link-active {
+    background-color: var(--clr-secondary);
+    color: var(--clr-white);
+}
 
 /* FIM CABEÇALHO */
 
@@ -111,6 +120,12 @@ main {
     padding: 3vh 6% 0;
 }
 /* FIM MAIN */
+
+/* COLUNA LATERAL */
+#coluna-lateral {
+    order: -1;
+}
+
 
 /* BARRA DE PESQUISA */
 .barra-pesquisa {
@@ -177,7 +192,7 @@ main {
     width: 100%;
 }
 .carrinho--card {
-    min-width: 40%;
+    min-width: min(40%, 200px);
     margin: 0 1%;
     padding: 2% 0;
     flex: 0 0 0;
@@ -241,17 +256,19 @@ main {
 .vitrine {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
 }
 .vitrine--card {
-    width: min(45%, 320px);
-    margin: 15px 0;
+    box-sizing: border-box;
+    width: 45%;
     border: 2px solid var(--clr-grey-0)
 }
     .vitrine--card:hover {
         border: 2px solid var(--clr-primary);
         transition: border-color 0.4s;
     }
+.vitrine--card:nth-child(odd) {
+    margin-right: 10%;
+}
 .vitrine--card-info-conteiner {
     padding: 11px 1% 11px 5%;
 }
@@ -299,7 +316,14 @@ main {
 /* MEDIA QUERIES */
 @media only screen and (min-width: 768px) {
     .vitrine--card {
-        width: 25%;
+        width: 30%;
+        margin: 0;
+    }
+    .vitrine--card:nth-child(odd) {
+        margin: 0;
+    }
+    .vitrine--card:nth-child(3n+2) {
+        margin: 0 5%;
     }
     .menu--icon {
         display: none;
@@ -313,29 +337,22 @@ main {
     .menu--link {
         border: 0;
         padding: 10px;
+        margin: 0 5px;
         width: auto;
-        color: var(--clr-grey-50);
+        border-radius: 4px;
     }
     .menu--link:hover {
         padding: 10px;
-        border-radius: 4px;
-    }
-    .menu--link-active {
-        color: var(--clr-black);
     }
 }
 @media only screen and (min-width: 1024px) {
     main {
         display: flex;
-        flex-flow: column wrap-reverse;
-        align-items: flex-end;
-        height: max(100vh, 950px);
+        justify-content: space-between;
     }
-    .barra-pesquisa {
+    #coluna-lateral {
         width: 30%;
-    }
-    .carrinho {
-        width: 30%;
+        order: 1;
     }
     .carrinho--lista {
         height: 400px;
@@ -353,12 +370,9 @@ main {
         text-align: left;
     }
     .vitrine {
-        width: 70%;
-    }
-    .vitrine--card {
-        margin: 0;
+        width: 65%;
     }
     .vitrine--card:nth-child(n+4) {
-        margin: 50px 0 0;
+        margin-top: 50px;
     }
 }

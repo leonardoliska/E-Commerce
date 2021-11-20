@@ -246,10 +246,13 @@ function filterByName() {
     }
 }
 
-function filterByTag(tag) {
+function filterByTag(selectedTag) {
+    
     resetVitrine()
 
-    if (tag != 'Todos'){
+    updateMenuLink(selectedTag)
+
+    if (selectedTag != 'Todos'){
         // Seleciona todas as cards da vitrine e armazena em um array
         const vitrineCards = document.getElementsByClassName('vitrine--card')
 
@@ -258,7 +261,7 @@ function filterByTag(tag) {
             const currentCard = vitrineCards[i]
             const currentCardTag = currentCard.querySelector('.vitrine--card-tag').innerText
 
-            if (currentCardTag != tag) {
+            if (currentCardTag != selectedTag) {
                 // Remove o card se ele não tiver a tag selecionada 
                 currentCard.remove()
                 // Decremento do "i" por motivo de remover um elemento do array, que altera seu tamanho
@@ -266,6 +269,16 @@ function filterByTag(tag) {
             }
         }
     }
+}
+
+function updateMenuLink(selectedTag) {
+    // Remove a classe 'menu--link-active' do elemento que a possui
+    const currentActiveTag = document.querySelector('.menu--link-active')
+    currentActiveTag.classList.remove('menu--link-active')
+
+    // Adicionar a classe 'menu--link-active' no link clicado
+    const selectedTagElement = document.querySelector(`.menu--link[value=${selectedTag}]`)
+    selectedTagElement.classList.add('menu--link-active')
 }
 
 function resetVitrine() {
@@ -294,3 +307,7 @@ for (let i = 0; i < tagLink.length; i++) {
 // Adiciona Event Listener no botão de pesquisa
 const searchButton = document.querySelector('.barra-pesquisa--button')
 searchButton.addEventListener('click', filterByName)
+
+// OBS: COLOCAR ALT NAS IMAGES 
+// ADICIONAR CLASSE CURRENT LINK
+// ADICIONAR QUERYSELECTOR
