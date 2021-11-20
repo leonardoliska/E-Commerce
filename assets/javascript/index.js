@@ -71,7 +71,7 @@ function createShowcaseItem(item){
     infoConteiner.classList.add('showcase-item-info-conteiner')
     itemTag.classList.add('showcase-item-tag')
     itemName.classList.add('showcase-item-name')
-    itemInfo.classList.add('showcase-item-info')
+    itemInfo.classList.add('showcase-item-detail')
     itemPrice.classList.add('showcase-item-price')
     itemAdd.classList.add('showcase-item-add')
 
@@ -336,9 +336,3 @@ for (let i = 0; i < linksArray.length; i++) {
 // Adiciona Event Listener no botão de pesquisa
 const searchButton = document.querySelector('.search-bar-button')
 searchButton.addEventListener('click', filterByName)
-
-// OBS: COLOCAR ALT NAS IMAGES 
-// ADICIONAR CLASSE CURRENT LINK
-// ADICIONAR QUERYSELECTOR
-// MUDAR O HOVER DO MENU
-// ADD FAVICON
