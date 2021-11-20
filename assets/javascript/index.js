@@ -1,5 +1,5 @@
-let cards = {
-    // Armazena as informações dos cards base do site
+const defaultItems = {
+    // Armazena as informações dos itens base do site
     '1': {
         image: 'assets/img/image1.png',
         tag: 'Camisetas',
@@ -50,196 +50,220 @@ let cards = {
     }
 }
 
-// Função para criar cada card
-function createCard(card){
-    // Criar elementos do card
-    let cardConteiner = document.createElement('div')
-    let figureConteiner = document.createElement('figure')
-    let cardImage = document.createElement('img')
-    let infoConteiner = document.createElement('div')
-    let itemTag = document.createElement('span')
-    let itemName = document.createElement('h3')
-    let itemInfo = document.createElement('span')
-    let itemPrice = document.createElement('span')
-    let itemAdd = document.createElement('a')
+function createShowcaseItem(item){
+    // Função para criar cada item da vitrine de acordo com os itens no dicionário 'defaultItems'
 
-    // Adicionar classes e ID's aos elementos do card
-    cardConteiner.classList.add('vitrine--card')
-    figureConteiner.classList.add('vitrine--card-figure')
-    infoConteiner.classList.add('vitrine--card-info-conteiner')
-    itemTag.classList.add('vitrine--card-tag')
-    itemName.classList.add('vitrine--card-name')
-    itemInfo.classList.add('vitrine--card-info')
-    itemPrice.classList.add('vitrine--card-price')
-    itemAdd.classList.add('vitrine--card-add')
-    cardConteiner.id = `vitrine-${card.id}`
+    // Criar elementos do item
+    const itemConteiner = document.createElement('div')
+    const figureConteiner = document.createElement('figure')
+    const itemImage = document.createElement('img')
+    const infoConteiner = document.createElement('div')
+    const itemTag = document.createElement('span')
+    const itemName = document.createElement('h3')
+    const itemInfo = document.createElement('span')
+    const itemPrice = document.createElement('span')
+    const itemAdd = document.createElement('a')
+
+    // Adicionar classes e ID's aos elementos do item
+    itemConteiner.classList.add('showcase-item')
+    itemConteiner.id = `showcase-item-${item.id}`
+    figureConteiner.classList.add('showcase-item-figure')
+    infoConteiner.classList.add('showcase-item-info-conteiner')
+    itemTag.classList.add('showcase-item-tag')
+    itemName.classList.add('showcase-item-name')
+    itemInfo.classList.add('showcase-item-info')
+    itemPrice.classList.add('showcase-item-price')
+    itemAdd.classList.add('showcase-item-add')
 
     // Adicionar conteúdo em cada elemento
-    cardImage.src = card.image
-    itemTag.innerText = card.tag
-    itemName.innerText = card.name
-    itemInfo.innerText = card.info
-    itemPrice.innerText = card.price
+    itemImage.src = item.image
+    itemImage.alt = `imagem d${item.tag.slice(-2, -1)} ${item.tag.slice(0, -1)} ${item.name}`.toLowerCase()
+    itemTag.innerText = item.tag
+    itemName.innerText = item.name
+    itemInfo.innerText = item.info
+    itemPrice.innerText = item.price
     itemAdd.innerText = 'Adicionar ao carrinho'
 
     // Adicionar elementos dentro de seus respectivos 'parents'
-    cardConteiner.appendChild(figureConteiner)
-    cardConteiner.appendChild(infoConteiner)
-    figureConteiner.appendChild(cardImage)
+    itemConteiner.appendChild(figureConteiner)
+    itemConteiner.appendChild(infoConteiner)
+    figureConteiner.appendChild(itemImage)
     infoConteiner.appendChild(itemTag)
     infoConteiner.appendChild(itemName)
     infoConteiner.appendChild(itemInfo)
     infoConteiner.appendChild(itemPrice)
     infoConteiner.appendChild(itemAdd)
 
-    // Criar eventListener do botão de adicionar ao carrinho
+    // Adicionar eventListener para o botão de adicionar ao carrinho
     itemAdd.addEventListener('click', addToCart)
 
-    // Adicionar o card à vitrine
-    let vitrine = document.getElementsByClassName('vitrine')[0]
-    vitrine.appendChild(cardConteiner)
+    // Adicionar o item à vitrine
+    const showcaseElement = document.querySelector('#showcase')
+    showcaseElement.appendChild(itemConteiner)
 }
 
-// Função para adicionar card ao carrinho
 function addToCart(event) {
-    // Seleciona o card clicado
-    const cardID = event.target.parentNode.parentNode.id        // Seleciona o ID do card
-    const card = cards[cardID.split('-')[1]]                    // Seleciona o card na lista de cards com o mesmo ID
+    // Função para adicionar o item ao carrinho
 
-    // Seleciona o carrinho
-    let carrinho = document.getElementsByClassName('carrinho--lista')[0]
+    // Seleciona o ID do item que recebeu o click
+    const itemID = event.target.parentNode.parentNode.id.split('-')[2]
+
+    // Seleciona o item do dicionário 'defaultItems' que possua o mesmo 'ID' de 'itemID'
+    const itemDict = defaultItems[itemID]
 
     // Criar os elementos que irão dentro do item no carrinho
-    let cardConteiner = document.createElement('li')
-    let figureConteiner = document.createElement('figure')
-    let infoConteiner = document.createElement('div')
-    let itemImage = document.createElement('img')
-    let itemName = document.createElement('h3')
-    let itemPrice = document.createElement('span')                                  
-    let removeCard = document.createElement('a')
+    const itemConteiner = document.createElement('li')
+    const figureConteiner = document.createElement('figure')
+    const infoConteiner = document.createElement('div')
+    const itemImage = document.createElement('img')
+    const itemName = document.createElement('h3')
+    const itemPrice = document.createElement('span')                                  
+    const removeItem = document.createElement('a')
 
     // Adicionar Classes nos items do carrinho
-    cardConteiner.classList.add('carrinho--card')
-    figureConteiner.classList.add('carrinho--card-figure')
-    infoConteiner.classList.add('carrinho--card-info')
-    itemName.classList.add('carrinho--card-name')
-    itemPrice.classList.add('carrinho--card-price')
-    removeCard.classList.add('carrinho--card-remove')
+    itemConteiner.classList.add('cart-item')
+    figureConteiner.classList.add('cart-item-figure')
+    infoConteiner.classList.add('cart-item-info-conteiner')
+    itemName.classList.add('cart-item-name')
+    itemPrice.classList.add('cart-item-price')
+    removeItem.classList.add('cart-item-remove')
 
     // Adicionar conteúdo nos elementos
-    itemImage.src = card.image
-    itemName.innerText = card.name
-    itemPrice.innerText = card.price
-    removeCard.innerText = 'Remover produto'
+    itemImage.src = itemDict.image
+    itemName.innerText = itemDict.name
+    itemPrice.innerText = itemDict.price
+    removeItem.innerText = 'Remover produto'
 
     // Adicionar elementos dentro de seus respectivos 'parents'
-    cardConteiner.appendChild(figureConteiner)
-    cardConteiner.appendChild(infoConteiner)
+    itemConteiner.appendChild(figureConteiner)
+    itemConteiner.appendChild(infoConteiner)
     figureConteiner.appendChild(itemImage)
     infoConteiner.appendChild(itemName)
     infoConteiner.appendChild(itemPrice)
-    infoConteiner.appendChild(removeCard)
+    infoConteiner.appendChild(removeItem)
 
-    // Adicionar a função de remover produto
-    removeCard.addEventListener('click', removeCartItem)
+    // Adicionar a função de remover produto para o botão de remover o item
+    removeItem.addEventListener('click', removeCartItem)
 
-    // Verifica se o carrinho está vazio para remover o elemento padrão
-    const carrinhoVazio = carrinho.children[0].nodeName == 'DIV'
-    if (carrinhoVazio) {
-            carrinho.removeChild(carrinho.children[0])
-            let carrinhoTotal = document.getElementsByClassName('carrinho-total')[0]
-            carrinhoTotal.style.display = 'flex'
-    }
     // Adicionar itemConteiner em carrinho
-    carrinho.appendChild(cardConteiner)
+    const cartList = document.querySelector('#cart-list')
+    cartList.appendChild(itemConteiner)
 
-    // Atualiza o valor total do carrinho
-    updateCartTotal()
+    // Atualiza o estado atual do carrinho
+    updateCartState()
 }
 
-// Função para remover item do carrinho
 function removeCartItem(event) {
-    // Remove o card
+    // Função para remover item do carrinho 
+
+    // Remove o item do carrinho
     const cartItem = event.target.parentNode.parentNode
     cartItem.remove()
 
-    // Verifica se o carrinho está vazio e remove o elemento 'carrinho-total' se estiver
-    const isCartEmpty = carrinho.children.length == 0
-    if (isCartEmpty) {
-        createEmptyCart()
-        const carrinhoTotal = document.getElementsByClassName('carrinho-total')[0]
-        carrinhoTotal.style.display = 'none'
-    }
-    // Atualiza o valor total do carrinho
-    updateCartTotal()
+    // Atualiza o estado do carrinho
+    updateCartState()
 }
 
-// Função para adicionar elementos para o carrinho vazio
-function createEmptyCart() {
+function createEmptyCartElement() {
+    // Função para adicionar elementos que mostram que o carrinho está vazio
+
+    // Reseta a lista de itens
+    const cart = document.querySelector('#cart-list')
+
     // Criar os elementos do carrinho sem itens
-    let emptyCartConteiner = document.createElement('div')
-    let emptyCartTitle = document.createElement('h2')
-    let emptyCartAdd = document.createElement('a')
+    const emptyCartConteiner = document.createElement('div')
+    const emptyCartTitle = document.createElement('h2')
+    const emptyCartAdd = document.createElement('a')
 
     // Adicionar texto nos elementos
     emptyCartTitle.innerText = 'Carrinho Vazio'
     emptyCartAdd.innerText = 'Adicionar itens'
 
     // Adicionar classes aos elementos
-    emptyCartConteiner.classList.add('carrinho--vazio-conteiner')
-    emptyCartAdd.classList.add('carrinho--card-add')
+    emptyCartConteiner.classList.add('cart-empty-conteiner')
+    emptyCartAdd.classList.add('cart-empty-add')
 
-    // Adicionar elementos em seu parent
+    // Adicionar elementos em seu 'parent'
     emptyCartConteiner.appendChild(emptyCartTitle)
     emptyCartConteiner.appendChild(emptyCartAdd)
 
     // Adicionar conteiner de elementos no carrinho
-    carrinho = document.getElementsByClassName('carrinho--lista')[0]
-    carrinho.appendChild(emptyCartConteiner)
+    cart.appendChild(emptyCartConteiner)
 }
 
-function updateCartTotal() {
-    // Selecionar elementos que serão atualizados
-    let quantityElement = document.getElementById('carrinho-quantity')
-    let priceElement= document.getElementById('carrinho-price')
+function updateCartState() {
+    // Função irá atualizar o estado atual do carrinho.
+    // -- Se não tem itens, cria um elemento para mostrar o carrinho vazio e remove o elemento que mostra o total do carrinho
+    // -- Se tem itens, remove o elemento para mostrar o carrinho vazio e adiciona o elemento que mostra o total do carrinho
+    // -- Em seguida calcula o valor e quantidade do carrinho e o atualiza
 
-    // Receber a quantidade total de itens
-    let cartTotalQuantity = document.getElementsByClassName('carrinho--card')
-    cartTotalQuantity = cartTotalQuantity.length.toString()
+    const cartTotalElement = document.querySelector('#cart-total')
+    const cartListElement = document.querySelector('#cart-list')
+    const isCartEmptyElementPresent = cartListElement.querySelectorAll('.cart-empty-conteiner').length > 0
+    const cartHasNoItens = cartListElement.querySelectorAll('.cart-item').length == 0
 
-    // Receber o preço total dos itens
-    const cartCards = document.getElementsByClassName('carrinho--card')
-    let cartTotalPrice = 0
-    for (let i = 0; i < cartCards.length; i++) {                             // Iterar por todos os cards no carrinho
-        let cardPrice = cartCards[i].childNodes[1].childNodes[1].innerText   // Acessa o elemento que contém o valor do card
-        cardPrice = parseInt(cardPrice.split(' ')[1])                        // Transforma a string 'R$ 100' em número
-        cartTotalPrice += cardPrice
+    // Executa se o carrinho está SEM itens
+    if (cartHasNoItens) {
+        // Se o elemento que mostra o carrinho vazio não estiver presente, ele é criado
+        if (isCartEmptyElementPresent == false) {
+            createEmptyCartElement()
+        }
+        // Deixa de exibir o elemento que mostra a quantidade e preço dos itens no carrinho
+        cartTotalElement.style.display = 'none'
+
     }
-    cartTotalPrice = `R$ ${cartTotalPrice},00`
+    // Executa se o carrinho está COM itens
+    else {
+        // Se o elemento que mostra o carrinho vazio estiver presente, ele é removido
+        if (isCartEmptyElementPresent) {
+            cartListElement.querySelectorAll('.cart-empty-conteiner')[0].remove()
+        }
+        // Exibe o elemento que mostra a quantidade e preço dos itens no carrinho
+        cartTotalElement.style.display = 'flex'
 
-    // Atualizar os elementos de acordo com os as quantidades recebidas
-    quantityElement.innerText = cartTotalQuantity
-    priceElement.innerText = cartTotalPrice
+        // Seleciona as variáveis de preço e quantidade para altera-las
+        const quantityElement = document.getElementById('cart-quantity')
+        const priceElement= document.getElementById('cart-price')
+
+        // Receber a quantidade total de itens no carrinho
+        const cartItensArray = document.getElementsByClassName('cart-item')
+        const cartTotalQuantity = cartItensArray.length
+        
+        // Calcular o valor total do carrinho
+        let cartTotalPrice = 0
+        for (let i = 0; i < cartItensArray.length; i++) {                             // Iterar por todos os itens no carrinho
+            let itemPrice = cartItensArray[i].childNodes[1].childNodes[1].innerText   // Acessa o elemento que contém o valor do item
+            itemPrice = parseInt(itemPrice.split(' ')[1])                             // Transforma a string 'R$ 100' em número
+            cartTotalPrice += itemPrice
+        }
+        cartTotalPrice = `R$ ${cartTotalPrice},00`
+
+        // Atualizar os elementos de acordo com os as quantidades recebidas
+        quantityElement.innerText = cartTotalQuantity
+        priceElement.innerText = cartTotalPrice
+    }
 }
 
 function filterByName() {
-    resetVitrine()
+    // Esta função serve para filtrar os itens da vitrine pelo valor digitado no input de pesquisa
 
-    // Seleciona todas as cards da vitrine e armazena em um array
-    const vitrineCards = document.getElementsByClassName('vitrine--card')
+    // Resetar a vitrine antes de fazer a busca pelos elementos
+    resetShowcase()
 
-    // Armazena o valor da pesquisa
-    const searchValue = document.querySelector('.barra-pesquisa--input').value
-    console.log(searchValue)
+    // Armazena o valor da pesquisa do input
+    const searchValue = document.querySelector('.search-bar-input').value
 
-    // Itera por todos os card da vitrine
-    for (let i = 0; i < vitrineCards.length; i++) {
-        const currentCard = vitrineCards[i]
-        const currentCardName = currentCard.querySelector('.vitrine--card-name').innerText.toLowerCase()
+    // Seleciona todos os itens da vitrine e armazena em um array
+    const showcaseItems = document.getElementsByClassName('showcase-item')
+
+    // Itera por todos os itens da vitrine e remove os que não contenham em seu 'nome' o 'valor do input'
+    for (let i = 0; i < showcaseItems.length; i++) {
+        const currentItem = showcaseItems[i]
+        const currentItemName = currentItem.querySelector('.showcase-item-name').innerText.toLowerCase()
         
-        // Remove o card se o seu nome não incluir o valor selecionado
-        if (currentCardName.includes(searchValue.toLowerCase()) == false) {
-            currentCard.remove()
+        // Remove o item se o seu 'nome' não incluir o 'valor do input'
+        if (currentItemName.includes(searchValue.toLowerCase()) == false) {
+            currentItem.remove()
             // Decremento do "i" por motivo de remover um elemento do array, que altera seu tamanho
             i--
         }
@@ -247,23 +271,26 @@ function filterByName() {
 }
 
 function filterByTag(selectedTag) {
-    
-    resetVitrine()
+    // Esta função serve para filtrar os itens da vitrine pela seleção de tag no menu do header
 
+    // Resetar a vitrine antes de fazer a busca pelos elementos
+    resetShowcase()
+
+    // Alterar o estilo do link selecionado
     updateMenuLink(selectedTag)
 
     if (selectedTag != 'Todos'){
-        // Seleciona todas as cards da vitrine e armazena em um array
-        const vitrineCards = document.getElementsByClassName('vitrine--card')
+        // Seleciona todos os itens da vitrine e armazena em um array
+        const showcaseItens = document.getElementsByClassName('showcase-item')
 
-        // Itera por cada card e verifica se ela possui a tag selecionada
-        for (let i = 0; i < vitrineCards.length; i++) {
-            const currentCard = vitrineCards[i]
-            const currentCardTag = currentCard.querySelector('.vitrine--card-tag').innerText
+        // Itera por cada item e verifica se ele possui a tag selecionada
+        for (let i = 0; i < showcaseItens.length; i++) {
+            const currentItem = showcaseItens[i]
+            const currentItemTag = currentItem.querySelector('.showcase-item-tag').innerText
 
-            if (currentCardTag != selectedTag) {
-                // Remove o card se ele não tiver a tag selecionada 
-                currentCard.remove()
+            if (currentItemTag != selectedTag) {
+                // Remove o item se ele não tiver a tag selecionada 
+                currentItem.remove()
                 // Decremento do "i" por motivo de remover um elemento do array, que altera seu tamanho
                 i--
             }
@@ -272,42 +299,43 @@ function filterByTag(selectedTag) {
 }
 
 function updateMenuLink(selectedTag) {
-    // Remove a classe 'menu--link-active' do elemento que a possui
-    const currentActiveTag = document.querySelector('.menu--link-active')
-    currentActiveTag.classList.remove('menu--link-active')
+    // Esta função irá mudar o estilo do link do menu atualmente selecionado
 
-    // Adicionar a classe 'menu--link-active' no link clicado
-    const selectedTagElement = document.querySelector(`.menu--link[value=${selectedTag}]`)
-    selectedTagElement.classList.add('menu--link-active')
+    // Remove a classe 'active-link' do elemento que a possui
+    const currentActiveTag = document.querySelector('.active-link')
+    currentActiveTag.classList.remove('active-link')
+
+    // Adicionar a classe 'active-link' no link clicado
+    const selectedTagElement = document.querySelector(`.menu-link[value=${selectedTag}]`)
+    selectedTagElement.classList.add('active-link')
 }
 
-function resetVitrine() {
-    // Resetar os cards na vitrine
-    const vitrine = document.querySelector('.vitrine')
-    vitrine.innerHTML = ''
-    for(const card of Object.values(cards)) {
-        createCard(card)
+function resetShowcase() {
+    // Esta função irá deletar os itens da vitrine e cria-los novamente
+    const showcase = document.querySelector('#showcase')
+    showcase.innerHTML = ''
+    for(const item of Object.values(defaultItems)) {
+        createShowcaseItem(item)
     }
 }
 
-// Criar todos os cards padrão
-resetVitrine()
-
-// Criar elemento padrão do carrinho
-createEmptyCart()
+// Criar todos os itens padrão da vitrine
+resetShowcase()
 
 // Adiciona Event Listener no menu de links
-const tagLink = document.getElementsByClassName('menu--link')
-for (let i = 0; i < tagLink.length; i++) {
-    const link = tagLink[i]
-    const tagName = link.innerText
-    link.addEventListener('click', () => filterByTag(tagName))
+const linksArray = document.getElementsByClassName('menu-link')
+for (let i = 0; i < linksArray.length; i++) {
+    const link = linksArray[i]
+    const tag = link.innerText
+    link.addEventListener('click', () => filterByTag(tag))
 }
 
 // Adiciona Event Listener no botão de pesquisa
-const searchButton = document.querySelector('.barra-pesquisa--button')
+const searchButton = document.querySelector('.search-bar-button')
 searchButton.addEventListener('click', filterByName)
 
 // OBS: COLOCAR ALT NAS IMAGES 
 // ADICIONAR CLASSE CURRENT LINK
 // ADICIONAR QUERYSELECTOR
+// MUDAR O HOVER DO MENU
+// ADD FAVICON

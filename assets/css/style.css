@@ -58,26 +58,27 @@ header {
     width: max(300px, 100%);
     padding: 20px 6%;
 }
-#weartake {
+#weartake-logo {
     font-size: 30px;
     line-height: 24px;
     color: var(--clr-black);
     padding-top: 12px;
 }
-.menu {
+#menu {
     position: relative;
 }
-    .menu:hover .menu--icon {
+    #menu:hover .menu-icon {
         background-color: var(--clr-secondary);
         border-bottom: 0;
     }
-    .menu:hover .menu--lista, .menu--lista:hover{
+    #menu:hover .menu-list, .menu-list:hover{
         display: block;
     }
-.menu--icon {
+
+.menu-icon {
     border-radius: 5px;
 }
-.menu--lista {
+.menu-list {
     display: none;
     position: absolute;
     overflow: hidden;
@@ -88,7 +89,7 @@ header {
     border-bottom: 0;
     border-radius: 10px 0 10px 10px;
 }
-.menu--link {
+.menu-link {
     display: block;
     box-sizing: border-box;
     font-size: 16px;
@@ -100,13 +101,13 @@ header {
     border-right: 7px solid var(--clr-secondary);
     border-bottom: 1px solid var(--clr-secondary);
 }
-.menu--link:hover {
+.menu-link:hover {
     background-color: var(--clr-secondary);
     color: var(--clr-white);
     transition: all 0.4s;
     padding-left: 15px;
 }
-.menu--link-active {
+.active-link {
     background-color: var(--clr-secondary);
     color: var(--clr-white);
 }
@@ -117,7 +118,7 @@ header {
 main {
     box-sizing: border-box;
     width: max(300px, 100%);
-    padding: 3vh 6% 0;
+    padding: 3vh 6% 8vh;
 }
 /* FIM MAIN */
 
@@ -126,16 +127,15 @@ main {
     order: -1;
 }
 
-
 /* BARRA DE PESQUISA */
-.barra-pesquisa {
+#search-bar {
     margin: 0 0 3vh;
 }
-.barra-pesquisa form {
+#search-bar form {
     display: flex;
     justify-content: space-between;
 }
-.barra-pesquisa--input {
+.search-bar-input {
     background-color: var(--clr-grey-0);
     box-sizing: border-box;
     border: 2px solid transparent;
@@ -143,21 +143,22 @@ main {
     height: 40px;
     padding: 7px;
 }
-    .barra-pesquisa--input:hover {
+    .search-bar-input:hover {
         border: 2px solid var(--clr-secondary);
         transition: 0.4s;
     }
-    .barra-pesquisa--input:focus {
+    .search-bar-input:focus {
         outline: 0;
     }
-.barra-pesquisa--button {
+
+.search-bar-button {
     background-color: var(--clr-secondary);
     color: var(--clr-white);
     border: 0;
     width: 34%;
     height: 40px;
 }
-    .barra-pesquisa--button:hover {
+    .search-bar-button:hover {
         cursor: pointer;
         background-color: var(--clr-primary);
         transition: background-color 0.4s;
@@ -166,10 +167,10 @@ main {
 
 
 /* CARRINHO DE COMPRAS */
-.carrinho {
+#cart {
     margin: 3vh 0;
 }
-.carrinho--header {
+#cart-header {
     background-color: var(--clr-secondary);
     color: var(--clr-white);
     border: 0;
@@ -177,46 +178,47 @@ main {
     padding: 10px 0;
     text-align: center;
 }
-.carrinho--lista {
+#cart-list {
     display: flex;
     overflow-y: scroll;
     padding: 21px 0 11px;
     background-color: var(--clr-grey-0);
 }
-.carrinho--vazio-conteiner {
+.cart-empty-conteiner {
     margin: auto;
 }
-.carrinho--vazio-conteiner h2 {
+.cart-empty-conteiner h2 {
     color: var(--clr-grey-100);
     text-align: center;
     width: 100%;
 }
-.carrinho--card {
+.cart-item {
     min-width: min(40%, 200px);
     margin: 0 1%;
     padding: 2% 0;
     flex: 0 0 0;
 }
-.carrinho--card-figure {
+.cart-item figure {
     height: 90px;
     display: flex;
     justify-content: center;
 }
-.carrinho--card-figure img {
+.cart-item figure img {
     height: 90%;
     width: auto;
 }
-.carrinho--card-name {
+
+.cart-item-name {
     color: var(--clr-grey-100);
     text-align: center;
 }
-.carrinho--card-price {
+.cart-item-price {
     color: var(--clr-primary);
     font-weight: 600;
     margin: 5px 0;
     text-align: center;
 }
-.carrinho--card-remove, .carrinho--card-add {
+.cart-item-remove, .cart-empty-add {
     color: var(--clr-grey-50);
     width: 100%;
     font-size: 12px;
@@ -225,54 +227,55 @@ main {
     text-align: center;
     display: block;
 }
-    .carrinho--card-remove:hover, .carrinho--card-add:hover {
+    .cart-item-remove:hover, .cart-item-add:hover {
         color: var(--clr-secondary);
         cursor: pointer;
     }
-.carrinho-total {
+#cart-total {
     display: none;
     flex-wrap: wrap;
     align-items: center;
     box-sizing: border-box;
     height: 100px;
     padding: 15px 6% 20px 5% ;
+    margin-bottom: 25px;
     background-color: var(--clr-grey-100);
 }
-.carrinho-total p {
+#cart-total p {
     width: 50%;
 }
-.carrinho-total p:nth-child(odd) {
+#cart-total p:nth-child(odd) {
     color: var(--clr-white);
 }
-.carrinho-total p:nth-child(even) {
+#cart-total p:nth-child(even) {
     color: var(--clr-grey-50);
     text-align: right;
 }
-
 /* FIM CARRINHO DE COMPRAS */
 
 
 /* VITRINE */
-.vitrine {
+#showcase {
     display: flex;
     flex-wrap: wrap;
 }
-.vitrine--card {
+.showcase-item {
     box-sizing: border-box;
     width: 45%;
     border: 2px solid var(--clr-grey-0)
 }
-    .vitrine--card:hover {
+    .showcase-item:hover {
         border: 2px solid var(--clr-primary);
         transition: border-color 0.4s;
     }
-.vitrine--card:nth-child(odd) {
+
+.showcase-item:nth-child(odd) {
     margin-right: 10%;
 }
-.vitrine--card-info-conteiner {
+.showcase-item-info-conteiner {
     padding: 11px 1% 11px 5%;
 }
-.vitrine--card-figure {
+.showcase-item-figure {
     background-color: var(--clr-grey-0);
     width: 100%;
     height: 150px;
@@ -281,32 +284,32 @@ main {
     align-items: center;
     overflow: hidden;
 }
-.vitrine--card-figure img{
+.showcase-item-figure img{
     height: 90%;
 }
-.vitrine--card-tag {
+.showcase-item-tag {
     color: var(--clr-white);
     background-color: var(--clr-primary);
     display: inline-block;
     padding: 3px 5px;
 }
-.vitrine--card-name {
+.showcase-item-name {
     color: var(--clr-grey-100);
     margin: 8px 0;
 }
-.vitrine--card-info {
+.showcase-item-detail {
     color: var(--clr-grey-50);
     margin: 8px 0;
 }
-.vitrine--card-price {
+.showcase-item-price {
     color: var(--clr-primary);
     font-weight: 600;
     margin: 8px 0;
 }
-.vitrine--card-add {
+.showcase-item-add {
     color: var(--clr-grey-50);
 } 
-    .vitrine--card-add:hover {
+    .showcase-item-add:hover {
         color: var(--clr-secondary);
         transition: 0.4s;
         cursor: pointer;
@@ -315,33 +318,33 @@ main {
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 768px) {
-    .vitrine--card {
+    .showcase-item {
         width: 30%;
         margin: 0;
     }
-    .vitrine--card:nth-child(odd) {
+    .showcase-item:nth-child(odd) {
         margin: 0;
     }
-    .vitrine--card:nth-child(3n+2) {
+    .showcase-item:nth-child(3n+2) {
         margin: 0 5%;
     }
-    .menu--icon {
+    .menu-icon {
         display: none;
     }
-    .menu--lista, .menu:hover .menu--lista, menu:hover {
+    #menu:hover, #menu:hover .menu-list, .menu-list {
         display: flex;
         position: static;
         background-color: transparent;
         border: 0;
     }
-    .menu--link {
+    .menu-link {
         border: 0;
         padding: 10px;
         margin: 0 5px;
         width: auto;
         border-radius: 4px;
     }
-    .menu--link:hover {
+    .menu-link:hover {
         padding: 10px;
     }
 }
@@ -350,29 +353,29 @@ main {
         display: flex;
         justify-content: space-between;
     }
-    #coluna-lateral {
+    #side-column {
         width: 30%;
         order: 1;
     }
-    .carrinho--lista {
+    #cart-list {
         height: 400px;
         flex-flow: column nowrap;
     }
-    .carrinho--card {
+    .cart-item {
         display: flex;
         min-height: 31%;
         margin: 0 2%;
     }
-    .carrinho--card-info {
+    .cart-item-info-conteiner {
         padding-left: 5%;
     }
-    .carrinho--card-name, .carrinho--card-price, .carrinho--card-remove {
+    .cart-item-name, .cart-item-price, .cart-item-remove {
         text-align: left;
     }
-    .vitrine {
+    #showcase {
         width: 65%;
     }
-    .vitrine--card:nth-child(n+4) {
+    .showcase-item:nth-child(n+4) {
         margin-top: 50px;
     }
 }
