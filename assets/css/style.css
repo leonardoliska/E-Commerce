@@ -130,6 +130,7 @@ main {
 }
     .barra-pesquisa--input:hover {
         border: 2px solid var(--clr-secondary);
+        transition: 0.4s;
     }
     .barra-pesquisa--input:focus {
         outline: 0;
@@ -150,10 +151,10 @@ main {
 
 
 /* CARRINHO DE COMPRAS */
-.carrinho-compras {
+.carrinho {
     margin: 3vh 0;
 }
-.carrinho-compras h3 {
+.carrinho--header {
     background-color: var(--clr-secondary);
     color: var(--clr-white);
     border: 0;
@@ -161,30 +162,78 @@ main {
     padding: 10px 0;
     text-align: center;
 }
-    .carrinho-compras h3:hover {
-        background-color: var(--clr-primary);
-        transition: all 0.4s;
-    }
-.carrinho-compras--lista {
-    background-color: var(--clr-grey-0);
+.carrinho--lista {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 200px;
+    overflow-y: scroll;
+    padding: 21px 0 11px;
+    background-color: var(--clr-grey-0);
 }
-.carrinho-compras--lista h2 {
+.carrinho--vazio-conteiner {
+    margin: auto;
+}
+.carrinho--vazio-conteiner h2 {
     color: var(--clr-grey-100);
     text-align: center;
-    margin-bottom: 5px;
+    width: 100%;
 }
-.carrinho-compras--lista a {
+.carrinho--card {
+    min-width: 40%;
+    margin: 0 1%;
+    padding: 2% 0;
+    flex: 0 0 0;
+}
+.carrinho--card-figure {
+    height: 90px;
+    display: flex;
+    justify-content: center;
+}
+.carrinho--card-figure img {
+    height: 90%;
+    width: auto;
+}
+.carrinho--card-name {
+    color: var(--clr-grey-100);
+    text-align: center;
+}
+.carrinho--card-price {
+    color: var(--clr-primary);
+    font-weight: 600;
+    margin: 5px 0;
+    text-align: center;
+}
+.carrinho--card-remove, .carrinho--card-add {
     color: var(--clr-grey-50);
+    width: 100%;
+    font-size: 12px;
     text-align: center;
     text-decoration: none;
+    text-align: center;
+    display: block;
 }
-    .carrinho-compras--lista a:hover {
+    .carrinho--card-remove:hover, .carrinho--card-add:hover {
         color: var(--clr-secondary);
+        cursor: pointer;
     }
+.carrinho-total {
+    display: none;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100px;
+    padding: 15px 6% 20px 5% ;
+    background-color: var(--clr-grey-100);
+}
+.carrinho-total p {
+    width: 50%;
+}
+.carrinho-total p:nth-child(odd) {
+    color: var(--clr-white);
+}
+.carrinho-total p:nth-child(even) {
+    color: var(--clr-grey-50);
+    text-align: right;
+}
+
 /* FIM CARRINHO DE COMPRAS */
 
 
@@ -194,18 +243,19 @@ main {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.card {
+.vitrine--card {
     width: min(45%, 320px);
     margin: 15px 0;
     border: 2px solid var(--clr-grey-0)
 }
-    .card:hover {
+    .vitrine--card:hover {
         border: 2px solid var(--clr-primary);
+        transition: border-color 0.4s;
     }
-.card--info-box {
+.vitrine--card-info-conteiner {
     padding: 11px 1% 11px 5%;
 }
-.card--item-figure {
+.vitrine--card-figure {
     background-color: var(--clr-grey-0);
     width: 100%;
     height: 150px;
@@ -214,39 +264,41 @@ main {
     align-items: center;
     overflow: hidden;
 }
-.card--item-figure img{
+.vitrine--card-figure img{
     height: 90%;
 }
-.card--item-tag {
+.vitrine--card-tag {
     color: var(--clr-white);
     background-color: var(--clr-primary);
     display: inline-block;
     padding: 3px 5px;
 }
-.card--item-name {
+.vitrine--card-name {
     color: var(--clr-grey-100);
     margin: 8px 0;
 }
-.card--item-info {
+.vitrine--card-info {
     color: var(--clr-grey-50);
     margin: 8px 0;
 }
-.card--item-price {
+.vitrine--card-price {
     color: var(--clr-primary);
     font-weight: 600;
     margin: 8px 0;
 }
-.card--item-add {
+.vitrine--card-add {
     color: var(--clr-grey-50);
 } 
-    .card--item-add:hover {
-        color: var(--clr-secondary)
+    .vitrine--card-add:hover {
+        color: var(--clr-secondary);
+        transition: 0.4s;
+        cursor: pointer;
     }
 /* FIM VITRINE */
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 768px) {
-    .card {
+    .vitrine--card {
         width: 25%;
     }
     .menu--icon {
@@ -282,19 +334,31 @@ main {
     .barra-pesquisa {
         width: 30%;
     }
-    .carrinho-compras {
+    .carrinho {
         width: 30%;
     }
-    .carrinho-compras--lista {
-        height: 350px;
+    .carrinho--lista {
+        height: 400px;
+        flex-flow: column nowrap;
+    }
+    .carrinho--card {
+        display: flex;
+        min-height: 31%;
+        margin: 0 2%;
+    }
+    .carrinho--card-info {
+        padding-left: 5%;
+    }
+    .carrinho--card-name, .carrinho--card-price, .carrinho--card-remove {
+        text-align: left;
     }
     .vitrine {
         width: 70%;
     }
-    .card {
+    .vitrine--card {
         margin: 0;
     }
-    .card:nth-child(n+4) {
+    .vitrine--card:nth-child(n+4) {
         margin: 50px 0 0;
     }
 }
