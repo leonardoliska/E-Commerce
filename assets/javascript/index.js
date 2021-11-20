@@ -71,7 +71,7 @@ function createShowcaseItem(item){
     infoConteiner.classList.add('showcase-item-info-conteiner')
     itemTag.classList.add('showcase-item-tag')
     itemName.classList.add('showcase-item-name')
-    itemInfo.classList.add('showcase-item-info')
+    itemInfo.classList.add('showcase-item-detail')
     itemPrice.classList.add('showcase-item-price')
     itemAdd.classList.add('showcase-item-add')
 

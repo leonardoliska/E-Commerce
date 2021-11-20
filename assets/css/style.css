@@ -386,4 +386,12 @@ main {
     #showcase {
         width: 65%;
     }
+    .showcase-item {
+        position: relative;
+    }
+    .showcase-item-tag {
+        position: absolute;
+        top: 2%;
+        left: 2%;
+    }
 }
