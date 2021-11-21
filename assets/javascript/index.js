@@ -197,9 +197,14 @@ function updateCartState() {
     // -- Se tem itens, remove o elemento para mostrar o carrinho vazio e adiciona o elemento que mostra o total do carrinho
     // -- Em seguida calcula o valor e quantidade do carrinho e o atualiza
 
+    // Seleciona os elementos que serão utilizados nesta função
     const cartTotalElement = document.querySelector('#cart-total')
     const cartListElement = document.querySelector('#cart-list')
+
+    // Salva na variável se o elemento que mostra se o carrinho está vazio está presente
     const isCartEmptyElementPresent = cartListElement.querySelectorAll('.cart-empty-conteiner').length > 0
+
+    // Salva na variável se o carrinho tem itens ou não
     const cartHasNoItens = cartListElement.querySelectorAll('.cart-item').length == 0
 
     // Executa se o carrinho está SEM itens
