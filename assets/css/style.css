@@ -62,7 +62,7 @@ header {
     font-size: 30px;
     line-height: 24px;
     color: var(--clr-black);
-    padding-top: 12px;
+    margin-top: 12px;
 }
 #menu {
     position: relative;
@@ -115,14 +115,13 @@ header {
     background-color: var(--clr-secondary);
     color: var(--clr-white);
 }
-
 /* FIM CABEÇALHO */
 
 /* MAIN */
 main {
     box-sizing: border-box;
     width: max(300px, 100%);
-    padding: 3vh 6% 8vh;
+    padding: 29px 6% 50px;
 }
 /* FIM MAIN */
 
@@ -130,11 +129,9 @@ main {
 #coluna-lateral {
     order: -1;
 }
+/* FIM COLUNA LATERAL */
 
 /* BARRA DE PESQUISA */
-#search-bar {
-    margin: 0 0 3vh;
-}
 #search-bar form {
     display: flex;
     justify-content: space-between;
@@ -172,7 +169,7 @@ main {
 
 /* CARRINHO DE COMPRAS */
 #cart {
-    margin: 3vh 0;
+    margin: 10px 0;
 }
 #cart-header {
     background-color: var(--clr-secondary);
@@ -185,7 +182,6 @@ main {
 #cart-list {
     display: flex;
     overflow-y: scroll;
-    padding: 21px 0 11px;
     background-color: var(--clr-grey-0);
 }
 .cart-empty-conteiner {
@@ -195,11 +191,11 @@ main {
     color: var(--clr-grey-100);
     text-align: center;
     width: 100%;
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 .cart-item {
     min-width: min(40%, 200px);
-    margin: 2% 1%;
+    margin: 15px 2%;
     flex: 0 0 0;
 }
 .cart-item-info-conteiner {
@@ -288,7 +284,7 @@ main {
     margin-top: 50px;
 }
 .showcase-item-info-conteiner {
-    padding: 11px 1% 11px 5%;
+    margin: 11px 1% 11px 5%;
 }
 .showcase-item-figure {
     background-color: var(--clr-grey-0);
@@ -384,8 +380,7 @@ main {
     }
     .cart-item {
         display: flex;
-        min-height: 31%;
-        margin: 0 2%;
+        margin: 15px 2% 0;
     }
     .cart-item-info-conteiner {
         padding-left: 5%;

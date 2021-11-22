@@ -227,11 +227,11 @@ function updateCartState() {
         cartTotalElement.style.display = 'flex'
 
         // Seleciona as variáveis de preço e quantidade para altera-las
-        const quantityElement = document.getElementById('cart-quantity')
-        const priceElement= document.getElementById('cart-price')
+        const quantityElement = document.querySelector('#cart-quantity')
+        const priceElement= document.querySelector('#cart-price')
 
         // Receber a quantidade total de itens no carrinho
-        const cartItensArray = document.getElementsByClassName('cart-item')
+        const cartItensArray = document.querySelectorAll('.cart-item')
         const cartTotalQuantity = cartItensArray.length
         
         // Calcular o valor total do carrinho
