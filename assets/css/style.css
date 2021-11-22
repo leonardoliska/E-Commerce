@@ -229,6 +229,7 @@ main {
 .cart-item-remove, .cart-item-add {
     color: var(--clr-grey-50);
     width: 100%;
+    margin-bottom: 15px;
     font-size: 12px;
     text-align: center;
     text-decoration: none;
