@@ -21,6 +21,6 @@ O objetivo deste projeto foi desenvolver um E-Commerce para treinar minhas habil
 ### Gostou do projeto e gostaria de ver o código? Vale a pena dar uma olhada:
 
 - HTML Semântico
-- CSS BEM
+- Responsividade
 - Lógica do Javascript
 - Organização em Geral
