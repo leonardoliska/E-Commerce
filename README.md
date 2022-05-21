@@ -1,7 +1,7 @@
 E-Commerce (Javascript Vanilla)
 ---
 
-## [Clique aqui para ver o projeto em produção!](https://leonardoliska.github.io/E-Commerce-Part-2/)
+## [Clique aqui para ver o projeto em produção!](https://leonardoliska.github.io/E-Commerce/)
 
 ### Objetivo
 
