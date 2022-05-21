@@ -5,6 +5,8 @@ E-Commerce (Javascript Vanilla)
 
 ### Objetivo
 
+Este foi um projeto que desenvolvi no módulo 1 da [**Kenzie Academy Brasil**](https://www.linkedin.com/school/kenzie-brasil/).
+
 O objetivo deste projeto foi desenvolver um E-Commerce para treinar minhas habilidades com HTML, CSS3 e Javascript.
 
 
